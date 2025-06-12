@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>龙族血统觉醒：言灵打字挑战</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 游戏标题区域 -->
+        <header class="game-header">
+            <h1>龙族血统觉醒：言灵打字挑战</h1>
+        </header>
+
+        <!-- 游戏状态面板 -->
+        <div class="status-panel">
+            <div class="health">生命值: <span id="health-value">100</span></div>
+            <div class="dragon-blood">龙血沸腾: <div class="progress-bar" id="blood-bar"><div class="progress" id="blood-progress"></div></div></div>
+            <div class="awakening">龙王苏醒: <div class="progress-bar" id="awakening-bar"><div class="progress" id="awakening-progress"></div></div></div>
+            <div class="timer">时间: <span id="timer-value">60</span>秒</div>
+        </div>
+
+        <!-- 主游戏区域 -->
+        <main class="game-area">
+            <div class="spirit-container" id="spirit-container">
+                <!-- 言灵符文将在这里动态生成 -->
+                <div class="spirit-text" id="spirit-text">君焰</div>
+            </div>
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="在此输入言灵..." autocomplete="off">
+                <button id="submit-btn">释放</button>
+            </div>
+        </main>
+
+        <!-- 技能栏 -->
+        <div class="skill-bar">
+            <div class="skill" data-skill="君焰">君焰</div>
+            <div class="skill" data-skill="时间零">时间零</div>
+            <div class="skill" data-skill="镰鼬">镰鼬</div>
+            <div class="skill" data-skill="戒律">戒律</div>
+        </div>
+
+        <!-- 开始菜单 -->
+        <div class="menu overlay" id="start-menu">
+            <h2>龙族血统觉醒</h2>
+            <p>准备好觉醒你的龙族血统了吗？通过输入言灵来释放强大的力量！</p>
+            <button id="rules-btn" class="secondary-btn">游戏规则</button>
+            <button id="start-btn">开始游戏</button>
+        </div>
+
+        <!-- 游戏规则模态框 -->
+        <div class="modal overlay" id="rules-modal" style="display: none;">
+            <div class="modal-content">
+                <h2>游戏规则</h2>
+                <div class="rules-content">
+                    <h3>🔥 核心玩法</h3>
+                    <p>作为卡塞尔学院的混血种，你需要通过快速输入屏幕上显示的言灵符文来释放技能，阻止龙王苏醒！</p>
+
+                    <h3>📜 言灵系统</h3>
+                    <ul>
+                        <li><strong>君焰</strong>：单体高伤害，需要输入复杂符文</li>
+                        <li><strong>时间零</strong>：暂停时间，输入简单但时间短</li>
+                        <li><strong>镰鼬</strong>：群体攻击，输入连续符文链</li>
+                        <li><strong>戒律</strong>：防御型，可吸收伤害</li>
+                    </ul>
+
+                    <h3>⚡ 龙血沸腾机制</h3>
+                    <p>连续正确输入会提升"龙血沸腾"进度条，满格后触发"血之哀"状态，所有言灵威力翻倍！</p>
+
+                    <h3>⏱️ 倒计时与难度递增</h3>
+                    <p>游戏有总倒计时，每成功释放言灵会延长时间。随着时间推移，龙王苏醒进度增加，言灵难度提高。</p>
+
+                    <h3>🎯 游戏目标</h3>
+                    <p>在龙王完全苏醒前，尽可能获得高分，生存下来并阻止灾难发生！</p>
+                </div>
+                <button id="close-rules-btn">返回</button>
+            </div>
+        </div>
+
+        <!-- 游戏结束菜单 -->
+        <div class="menu overlay" id="end-menu" style="display: none;">
+            <h2 id="end-title">游戏结束</h2>
+            <p id="end-message"></p>
+            <button id="restart-btn">再来一次</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
