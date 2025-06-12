@@ -405,10 +405,55 @@ body {
     pointer-events: none;
 }
 
+.spirit-gravity {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(100,100,100,0.7) 0%, rgba(0,0,0,0) 70%);
+    animation: gravity-pulse 1.5s ease-out;
+    pointer-events: none;
+}
+
+.spirit-strength {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(218,165,32,0.6) 0%, rgba(0,0,0,0) 70%);
+    animation: strength-pulse 1s ease-out;
+    pointer-events: none;
+}
+
+.spirit-lightning {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(138,43,226,0.6) 0%, rgba(0,0,0,0) 70%);
+    animation: lightning-pulse 0.8s ease-out;
+    pointer-events: none;
+}
+
 @keyframes thunder-pulse {
     0% { opacity: 0; transform: scale(0.5); }
     50% { opacity: 1; transform: scale(1.2); }
     100% { opacity: 0; transform: scale(1.5); }
+}
+
+@keyframes gravity-pulse {
+    0% { opacity: 0; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.1); }
+    100% { opacity: 0; transform: scale(1.3); }
+}
+
+@keyframes strength-pulse {
+    0% { opacity: 0; transform: scale(0.7); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0; transform: scale(1.4); }
+}
+
+@keyframes lightning-pulse {
+    0% { opacity: 0; transform: scale(0.6); }
+    50% { opacity: 1; transform: scale(1.3); }
+    100% { opacity: 0; transform: scale(1.6); }
 }
 
 /* 龙血沸腾状态样式 */

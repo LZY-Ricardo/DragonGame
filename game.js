@@ -37,7 +37,12 @@ document.addEventListener('DOMContentLoaded', () => {
         '君焰': { difficulty: 3, type: 'attack', effect: 'fire', cooldown: 10000 },
         '时间零': { difficulty: 2, type: 'defense', effect: 'ice', cooldown: 15000 },
         '镰鼬': { difficulty: 4, type: 'attack', effect: 'thunder', cooldown: 8000 },
-        '戒律': { difficulty: 1, type: 'defense', effect: 'shield', cooldown: 12000 }
+        '戒律': { difficulty: 1, type: 'defense', effect: 'shield', cooldown: 12000 },
+        '烛龙': { difficulty: 5, type: 'attack', effect: 'fire', cooldown: 20000 },
+        '吸血镰': { difficulty: 4, type: 'attack', effect: 'thunder', cooldown: 12000 },
+        '王权': { difficulty: 4, type: 'defense', effect: 'gravity', cooldown: 15000 },
+        '青铜御座': { difficulty: 3, type: 'defense', effect: 'strength', cooldown: 10000 },
+        '因陀罗': { difficulty: 4, type: 'attack', effect: 'lightning', cooldown: 14000 }
     };
 
     // 技能冷却状态
@@ -45,7 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
         '君焰': 0,
         '时间零': 0,
         '镰鼬': 0,
-        '戒律': 0
+        '戒律': 0,
+        '烛龙': 0,
+        '吸血镰': 0,
+        '王权': 0,
+        '青铜御座': 0,
+        '因陀罗': 0
     };
 
     // 初始化青铜柱和龙文背景
@@ -217,6 +227,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         generateRandomSpirit();
                     }, 500);
                 }, 1000);
+                break;
+            case 'gravity':
+                effectElement.className = 'spirit-effect spirit-gravity';
+                // 王权效果：降低龙王苏醒进度
+                awakeningLevel -= 0.5;
+                if (awakeningLevel < 0) awakeningLevel = 0;
+                break;
+            case 'strength':
+                effectElement.className = 'spirit-effect spirit-strength';
+                // 青铜御座效果：增加生命值
+                health += 30;
+                if (health > 100) health = 100;
+                updateStatusPanel();
+                break;
+            case 'lightning':
+                effectElement.className = 'spirit-effect spirit-lightning';
+                // 因陀罗效果：同时攻击多个目标
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => {
+                        spiritText.classList.add('correct');
+                        userInput.value = '';
+                        setTimeout(() => {
+                            spiritText.classList.remove('correct');
+                            generateRandomSpirit();
+                            increaseAwakening();
+                        }, 300);
+                    }, i * 500);
+                }
                 break;
             case 'shield':
                 // 戒律效果：增加生命值
